@@ -89,5 +89,11 @@ console.log(bill);
 
 // -------- template literals
 
-const billNew = `I'm`
+const billNew = `I'm ${firstName}, a ${year-birthYear} years old ${job}!`;
 console.log(billNew);
+
+console.log(`I'm a design`);
+
+console.log(`String with
+multiple
+lines`);
