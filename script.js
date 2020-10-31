@@ -61,7 +61,7 @@ console.log(population + 1);
 console.log(population > 6000000);
 console.log(3300000 > population);
 const description = 'Portugal is in Europe, and its 11 million people speak portuguese';
-*/
+
 
 const now = 2037;
 const ageJohn = now - 1991;
@@ -76,3 +76,4 @@ console.log(x, y);
 const averageAge = (ageJohn + ageSara) / 2;
 console.log(ageJohn, ageSara);
 console.log(averageAge);
+*/
