@@ -77,3 +77,17 @@ const averageAge = (ageJohn + ageSara) / 2;
 console.log(ageJohn, ageSara);
 console.log(averageAge);
 */
+
+const firstName = 'Bill';
+const lastName = 'Jensen';
+const birthYear = 1965;
+const year = 2020;
+const job = 'designer';
+
+const bill = "I'm " + firstName + ', a ' + (year - birthYear) + ' years old ' + job + '!';
+console.log(bill);
+
+// -------- template literals
+
+const billNew = `I'm`
+console.log(billNew);
