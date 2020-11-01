@@ -101,23 +101,88 @@ lines`);
 
 // ------ decisions
 
-const age = 14;
+// const age = 14;
 
-if (age >= 18) {
-  console.log("Sara is old enough to drive 🚗");
-} else {
-  const yearsLeft = 18 - age;
-  console.log(`No driving for Sara! Wait another ${yearsLeft} years. ⏳`);
-}
+// if (age >= 18) {
+//   console.log("Sara is old enough to drive 🚗");
+// } else {
+//   const yearsLeft = 18 - age;
+//   console.log(`No driving for Sara! Wait another ${yearsLeft} years. ⏳`);
+// }
 
-const birthYear = 2001;
+// const birthYear = 2001;
 
-let century;
+// let century;
 
-if (birthYear <= 2000) {
-  century = 20;
-} else {
-  century = 21;
-}
+// if (birthYear <= 2000) {
+//   century = 20;
+// } else {
+//   century = 21;
+// }
 
-console.log(century);
+// console.log(century);
+
+
+// SWITCH Statement -----------
+// const day = 'sunday';
+
+// switch (day) {
+//   case 'monday': // day === 'monday'
+//     console.log('Plan my course structure');
+//     console.log('Go to coding meetup');
+//     break;
+//   case 'tuesday':
+//     console.log('Prepare videos');
+//     break;
+//   case 'wednesday':
+//   case 'thursday':
+//     console.log('Code examples');
+//     break;
+//   case 'friday':
+//     console.log('Record video');
+//     break;
+//   case 'saturday':
+//   case 'sunday':
+//     console.log('Enjoy the weekend');
+//     break;
+//   default:
+//     console.log('Not a valid day');
+// }
+
+// if (day === 'monday') {
+//   console.log('Plan my course structure');
+//   console.log('Go to coding meetup');
+// } else if (day === 'tuesday') {
+//   console.log('Prepare videos');
+// } else if (day === 'wednesday' || day === 'thursday') {
+//   console.log('Code examples');
+// } else if (day === 'friday') {
+//   console.log('Record video');
+// } else if (day === 'saturday' || day === 'sunday') {
+//   console.log('Enjoy the weekend');
+// } else {
+//   console.log('Not a valid day');
+// }
+
+// ----- Statements and Expressions
+
+// 3 + 4 //expression   - produce value
+// 1991 //expression   - produce value
+// true && false && !false //expression   - produce value
+
+// if (23 > 10) { // this is a statement - like a full sentence
+//   const str = 'This is the answer'; // actions get performed
+// }
+
+// const me = 'Bill';
+// console.log(`I'm ${me} expressions in literals`);
+
+// Conditional - Ternary Operator
+
+const age = 18;
+// age >= 18 ? console.log('Drink wine 🍷') : console.log('Drink water 💦');
+
+// const drink = age >= 18 ? 'drink wine 🍷' : 'drink water 💦';
+// console.log(drink);
+
+console.log(`I like to ${age >= 18 ? 'drink wine 🍷' : 'drink water 💦'} because I am ${age}.`)
