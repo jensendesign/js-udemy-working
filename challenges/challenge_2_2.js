@@ -17,3 +17,45 @@ HINT: Remember that an array needs a value in each position, and that value can 
 
 GOOD LUCK 😀
 */
+
+// const calcTip = function(bill) {
+//     if (bill <= 300 && bill >= 50) {
+//         let tip = bill * 0.15;
+//         return tip;
+//     } else {
+//         let tip = bill * 0.2;
+//         return tip
+//     }
+// }
+
+// const tip1 = calcTip(bill[0]);
+// const tip2 = calcTip(bill[1]);
+// const tip3 = calcTip(bill[2]);
+// const tips = [tip1, tip2, tip3];
+
+// const total1 = calcTotal(bill[0], tips[0]);
+// const total2 = calcTotal(bill[1], tips[1]);
+// const total3 = calcTotal(bill[2], tips[2]);
+// const totals = [total1, total2, total3];
+
+
+
+// function to calc tips
+const calcTip = function (bill) {
+    return bill <= 300 && bill >= 50 ? bill * 0.15 : bill * 0.2;
+}
+
+// bills array
+const bill = [125, 555, 44];
+console.log(bill);
+
+// tips array
+const tips = [calcTip(bill[0]), calcTip(bill[1]), calcTip(bill[2])]
+console.log(tips);
+
+// function to find totals
+const calcTotal = (bill, tips) => bill + tips;
+
+// totals array
+const totals = [calcTotal(bill[0], tips[0]), calcTotal(bill[1], tips[1]), calcTotal(bill[2], tips[2])]
+console.log(totals)
