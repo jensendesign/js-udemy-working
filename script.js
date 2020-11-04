@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /*
 ///////////////////////////////////////
@@ -173,7 +173,7 @@ const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length -
   console.log(ages);
   */
 
-  /*
+/*
   // add elements
 const friends = ['Mike', 'Steve', 'Peter'];
 const newLength = friends.push('Bob'); // also returns length
@@ -339,3 +339,122 @@ console.log(`${jonas.firstName} is a ${jonas.age}-year-old ${jonas.job}, and he 
 
 console.log(jonas.getSummary());
 */
+
+/* - FOR LOOP ---------------
+// console.log('Lifting weights rep 1');
+// console.log('Lifting weights rep 2');
+// console.log('Lifting weights rep 3');
+// console.log('Lifting weights rep 4');
+// console.log('Lifting weights rep 5');
+// console.log('Lifting weights rep 6');
+
+// for loop keeps running while condition is TRUE
+// for (let rep = 1; rep <= 10; rep++ ) {
+//   console.log(`Lifting weights repitition ${rep} 🏋️‍♂️`);
+// }
+
+for (let i = 1; i <= 10; i++ ) {
+  console.log(`Lifting weights repitition ${i} 🏋️‍♂️`);
+}
+
+*/
+
+/*
+const jonasArray = [
+  'Jonas',
+  'Schmedtmann',
+  2037 - 1991,
+  'teacher',
+  ['Michael', 'Peter', 'Steven'],
+  true
+];
+
+const types = [];
+// console.log(jonasArray[0]);
+// console.log(jonasArray[1]);
+// console.log(jonasArray[2]);
+// console.log(jonasArray[3]);
+// console.log(jonasArray[4]);
+// 5 does NOT EXIST
+
+// Loop through Array
+for (let i = 0; i < jonasArray.length; i++) {
+  // reading an array
+  console.log(jonasArray[i], typeof jonasArray[i]);
+  //construct an array from previous array - filling an array
+  // types[i] = typeof jonasArray[i];
+  types.push(typeof jonasArray[i]);
+}
+
+console.log(types);
+
+const years = [1991, 2007, 1969, 2020];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+  ages.push(2037 - years[i]);
+}
+
+console.log(ages);
+
+// continue and break
+console.log('--- ONLY STRINGS ---')
+for (let i = 0; i < jonasArray.length; i++) {
+  if (typeof jonasArray[i] !== 'string') continue;
+
+  console.log(jonasArray[i], typeof jonasArray[i]);
+}
+
+console.log('--- Break With Number ---')
+for (let i = 0; i < jonasArray.length; i++) {
+  if (typeof jonasArray[i] === 'number') break;
+
+  console.log(jonasArray[i], typeof jonasArray[i]);
+}
+*/
+
+/* 
+const jonas = [
+  'Jonas',
+  'Schmedtmann',
+  2037 - 1991,
+  'teacher',
+  ['Michael', 'Peter', 'Steven'],
+];
+
+// typical order 0, 1, 2, 3...
+// backwards 4, 3, 2, 1, 0
+
+
+for (let i =jonas.length - 1; i >= 0 ; i--) {
+  console.log(i, jonas[i]);
+}
+
+for (let exercise = 1; exercise <= 4; exercise++) {
+  console.log(`----- Group ${exercise}`);
+  let times = exercise + 2;
+  for (let rep = 1; rep <= times; rep++) {
+    console.log(`--Exercise ${exercise}, rep ${rep} 🏋️‍♂️`);
+  }
+}
+*/
+
+// for loop keeps running while condition is TRUE
+// for (let rep = 1; rep <= 10; rep++ ) {
+//   console.log(`Lifting weights repetitions ${rep} 🏋️‍♂️`);
+// }
+
+// let rep = 1;
+// while (rep <= 5) {
+//   console.log(`Lifting weights reps ${rep} 🏋️‍♂️`);
+//   rep++;
+// }
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+// console.log(dice);
+
+while (dice !== 6) {
+  console.log(`You rolled a ${dice}`);
+  dice = Math.trunc(Math.random() * 6) + 1;
+  if (dice === 6) console.log("BAM! a 6!");
+}
