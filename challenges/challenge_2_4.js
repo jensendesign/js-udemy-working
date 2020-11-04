@@ -43,5 +43,3 @@ for (let i = 0; i < arr.length; i++) {
   sum.push(calcAverage([i]));
 }
 // console.log(sum);
-
-cl;
