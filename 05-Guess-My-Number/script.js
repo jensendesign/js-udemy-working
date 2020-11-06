@@ -1,71 +1,51 @@
 'use strict';
 
-/*
-console.log(document.querySelector('.message').textContent);
-console.log(document.querySelector('.number').textContent);
-console.log(document.querySelector('.score').textContent);
-console.log(document.querySelector('.guess').value);
-
-document.querySelector('.message').textContent = '🎉 Correct Answer!';
-document.querySelector('.number').textContent = 14;
-document.querySelector('.score').textContent = 39;
-document.querySelector('.guess').value = 11;
-
-console.log(document.querySelector('.message').textContent);
-console.log(document.querySelector('.number').textContent);
-console.log(document.querySelector('.score').textContent);
-console.log(document.querySelector('.guess').value);
-*/
-
-// --- Generate the secret number ---
+// ****** Generate the secret number ******
 let secretNumber = Math.trunc(Math.random() * 20 + 1);
 console.log(secretNumber);
 
-// --- Set Score to 20
+// ****** Game Score -  High Score - Answer ******
 let gameScore = 20;
 document.querySelector('.score').textContent = gameScore;
-
-// --- Set High Score to 0
 let highScore = 0;
 document.querySelector('.highscore').textContent = 0;
+document.querySelector('.number').textContent = '?'; // hide the answer
 
-// --- Display in the interface
-document.querySelector('.number').textContent = '?';
-
-// --- Listen for click on button - function
+/**
+ * @desc Main game function acting on click of "Check" button
+ * @desc Checks and returns state for win, lose, or steady state
+ * @param string $textContent - the message to be displayed
+ * @param number $guess - current number guessed
+ * @param number $gameScore - current game score
+ * @param number $highScore - current highest score
+ */
 document.querySelector('.check').addEventListener('click', function () {
-  // --- get input and change from string to a number ---
-  const guess = Number(document.querySelector('.guess').value);
+  const guess = Number(document.querySelector('.guess').value); // --- change from string to a number
 
-  // --- First handle if no number ---
+  // ****** IF NO NUMBER ******
   if (!guess) {
     document.querySelector('.message').textContent = '😡 No Number Selected';
-    // --- Handle if winning match ---
+
+    // ****** IF WINNING MATCH ******
   } else if (guess === secretNumber && gameScore > 0) {
     document.querySelector('.message').textContent = '🐥 Winner Chicken Dinner';
     document.querySelector('.number').textContent = secretNumber;
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '45rem';
     document.querySelector('.number').style.color = '#60b347';
-    // --- Set High Score on Win ---
+
     if (highScore < gameScore) {
-      highScore = gameScore;
+      highScore = gameScore; // --- Set High Score on Win
       document.querySelector('.highscore').textContent = highScore;
     }
-    // --- Handle high guess ---
-  } else if (guess > secretNumber && gameScore > 0) {
-    // --- decrease score by 1 ---
-    gameScore--;
+    // ****** IF WRONG GUESS ******
+  } else if (guess !== secretNumber && gameScore > 0) {
+    gameScore--; // --- decrease score by 1
     document.querySelector('.score').textContent = gameScore;
-    document.querySelector('.message').textContent = '🤦‍♀️ Too High';
-    // --- Handle all others - lower ---
-  } else if (guess < secretNumber && gameScore > 0) {
-    // --- decrease score by 1 ---
-    gameScore--;
-    document.querySelector('.score').textContent = gameScore;
-    document.querySelector('.message').textContent = '👻 Too Low';
+    document.querySelector('.message').textContent =
+      guess > secretNumber ? '🤦‍♀️ Too High' : '👻 Too Low'; // --- too high or low
   }
-  // --- You lose -------------
+  // ****** YOU LOSE - Score goes to Zero ******
   if (gameScore === 0) {
     document.querySelector('.message').textContent = '😥 You Lose';
     document.querySelector('.number').textContent = secretNumber;
@@ -74,7 +54,10 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.number').style.color = 'red';
   }
 });
-// --- RESET button - function
+
+/**
+ * @desc Resets game to play again without losing info
+ */
 document.querySelector('.again').addEventListener('click', function () {
   gameScore = 20;
   document.querySelector('.score').textContent = gameScore;
@@ -82,9 +65,9 @@ document.querySelector('.again').addEventListener('click', function () {
   secretNumber = Math.trunc(Math.random() * 20 + 1);
   console.clear();
   console.log(secretNumber);
-  document.querySelector('body').style.backgroundColor = '#111111';
+  document.querySelector('.message').textContent = 'Start Guessing ...'; // --- reset strings
+  document.querySelector('.guess').value = '';
+  document.querySelector('body').style.backgroundColor = '#111111'; // --- rest CSS
   document.querySelector('.number').style.width = '15rem';
   document.querySelector('.number').style.color = '#333333';
-  document.querySelector('.message').textContent = 'Start Guessing ...';
-  document.querySelector('.guess').value = '';
 });
