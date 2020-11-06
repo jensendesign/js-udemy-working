@@ -9,7 +9,19 @@ let gameScore = 20;
 document.querySelector('.score').textContent = gameScore;
 let highScore = 0;
 document.querySelector('.highscore').textContent = 0;
-document.querySelector('.number').textContent = '?'; // hide the answer
+
+// ****** Hide Answer Function ******
+const hideValue = function (hide) {
+  document.querySelector('.number').textContent =
+    hide === 'hide' ? '?' : secretNumber;
+};
+
+// ****** Function to pass styles ******
+const adjustStyles = function (background, width, color) {
+  document.querySelector('body').style.backgroundColor = background;
+  document.querySelector('.number').style.width = width;
+  document.querySelector('.number').style.color = color;
+};
 
 /**
  * @desc Main game function acting on click of "Check" button
@@ -29,10 +41,8 @@ document.querySelector('.check').addEventListener('click', function () {
     // ****** IF WINNING MATCH ******
   } else if (guess === secretNumber && gameScore > 0) {
     document.querySelector('.message').textContent = '🐥 Winner Chicken Dinner';
-    document.querySelector('.number').textContent = secretNumber;
-    document.querySelector('body').style.backgroundColor = '#60b347';
-    document.querySelector('.number').style.width = '45rem';
-    document.querySelector('.number').style.color = '#60b347';
+    hideValue('show');
+    adjustStyles('#60b347', '45rem', '#60b347');
 
     if (highScore < gameScore) {
       highScore = gameScore; // --- Set High Score on Win
@@ -48,10 +58,8 @@ document.querySelector('.check').addEventListener('click', function () {
   // ****** YOU LOSE - Score goes to Zero ******
   if (gameScore === 0) {
     document.querySelector('.message').textContent = '😥 You Lose';
-    document.querySelector('.number').textContent = secretNumber;
-    document.querySelector('body').style.backgroundColor = 'red';
-    document.querySelector('.number').style.width = '45rem';
-    document.querySelector('.number').style.color = 'red';
+    hideValue('show');
+    adjustStyles('red', '45rem', 'red');
   }
 });
 
@@ -61,13 +69,11 @@ document.querySelector('.check').addEventListener('click', function () {
 document.querySelector('.again').addEventListener('click', function () {
   gameScore = 20;
   document.querySelector('.score').textContent = gameScore;
-  document.querySelector('.number').textContent = '?';
+  hideValue('hide');
   secretNumber = Math.trunc(Math.random() * 20 + 1);
+  document.querySelector('.message').textContent = 'Start Guessing ...'; // --- reset strings
+  adjustStyles('#111111', '15rem', '#333333');
+  document.querySelector('.guess').value = '';
   console.clear();
   console.log(secretNumber);
-  document.querySelector('.message').textContent = 'Start Guessing ...'; // --- reset strings
-  document.querySelector('.guess').value = '';
-  document.querySelector('body').style.backgroundColor = '#111111'; // --- rest CSS
-  document.querySelector('.number').style.width = '15rem';
-  document.querySelector('.number').style.color = '#333333';
 });
