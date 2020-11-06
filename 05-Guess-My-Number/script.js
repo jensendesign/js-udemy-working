@@ -1,4 +1,5 @@
 'use strict';
+// Game is working
 
 // ****** Generate the secret number ******
 let secretNumber = Math.trunc(Math.random() * 20 + 1);
