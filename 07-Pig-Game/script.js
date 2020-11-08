@@ -6,24 +6,44 @@ const player0El = document.querySelector('.player--0'); // player "1" section
 const player1El = document.querySelector('.player--1'); // player "2" section
 const score0El = document.querySelector('#score--0'); // top-line score
 const score1El = document.querySelector('#score--1');
-const current0El = document.getElementById('current--0'); // current roll score
-const current1El = document.getElementById('current--1');
+let current0El = document.getElementById('current--0'); // current roll score
+let current1El = document.getElementById('current--1');
 const diceEl = document.querySelector('.dice'); // dice image
 const btnHold = document.querySelector('.btn--hold'); // Hold btn
 const btnRoll = document.querySelector('.btn--roll'); // Roll btn
 const btnNew = document.querySelector('.btn--new'); // New/Refresh Btn
 
-//
-// **** Initialize Content ****
-score0El.textContent = 0; // scores to zero
-score1El.textContent = 0;
-diceEl.classList.add('hidden'); // hide dice
-const scores = [0, 0]; // Top-line score array
-let currentScore = 0; // current running dice score
-let activePlayer = 0; // current active player
-let playing = true; // is game active
+//set init vars
+let scores, activePlayer, currentScore, playing;
 
-//
+/**
+ * Function to init or reset game
+ */
+const init = function () {
+  scores = [0, 0]; // Top-line score array
+  activePlayer = 0; // current active player
+  currentScore = 0; // current running dice score
+  playing = true; // is game active
+
+  score0El.textContent = 0; // scores to zero
+  score1El.textContent = 0;
+  diceEl.classList.add('hidden'); // hide dice
+  activePlayer = 0; // current active player
+  currentScore = 0; // current running dice score
+  playing = true; // is game active
+
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+  //   scores.length = 0;
+  //   scores.push(0, 0);
+  player0El.classList.remove('player--winner');
+  player1El.classList.remove('player--winner');
+  player0El.classList.add('player--active');
+};
+
+// call init
+init();
+
 /**
  * Switching between the players
  * @param  activePlayer // which player is playing
@@ -38,7 +58,6 @@ const switchPlayer = function () {
   player1El.classList.toggle('player--active');
 };
 
-//
 /**
  * Function roll the dice
  * @param  {boolean} playing // is the game over or playable
@@ -62,7 +81,6 @@ btnRoll.addEventListener('click', function () {
   }
 });
 
-//
 /**
  * Function to allow player to 'capture' their score
  * @param  {boolean} playing // is the game over or playable
@@ -76,7 +94,7 @@ btnHold.addEventListener('click', function () {
       scores[activePlayer];
 
     // **** Winning Condition ****
-    if (scores[activePlayer] >= 20) {
+    if (scores[activePlayer] >= 100) {
       playing = false;
       diceEl.classList.add('hidden');
       document
@@ -91,3 +109,8 @@ btnHold.addEventListener('click', function () {
     }
   }
 });
+
+/**
+ * Function to reset game
+ */
+btnNew.addEventListener('click', init);
